@@ -15,7 +15,7 @@
         <property name="connection.pool_size">1</property>
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping class="com.karienomen.teach.hibertest.domain.UserDetails" />
+        <mapping class="com.karienomen.hibertest.domain.UserDetails" />
 
     </session-factory>
 </hibernate-configuration>

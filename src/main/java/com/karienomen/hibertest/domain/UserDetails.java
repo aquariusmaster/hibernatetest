@@ -1,9 +1,11 @@
-package com.karienomen.teach.hibertest.domain;
+package com.karienomen.hibertest.domain;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by karienomen on 08.10.16.
@@ -13,11 +15,15 @@ import java.util.Set;
 public class UserDetails {
 
     @Id @GeneratedValue
+    @Column(name = "user_id")
     private int userId;
     private String userName;
     private Date joinedDate;
     @ElementCollection
-    private Set<Address> listOfAddresses = new HashSet<Address>();
+    @JoinTable(name = "user_address", joinColumns = @JoinColumn(name = "user_id"))
+    @GenericGenerator(name = "sequence-gen", strategy = "sequence")
+    @CollectionId(columns = {@Column(name = "address_id")}, type = @Type(type = "long"), generator = "sequence-gen")
+    private Collection<Address> listOfAddresses = new ArrayList<Address>();
     private String descriptions;
 
 
@@ -45,12 +51,12 @@ public class UserDetails {
         this.joinedDate = joinedDate;
     }
 
-    public Set<Address> getListOfAddresses() {
+    public Collection<Address> getListOfAddresses() {
         return listOfAddresses;
     }
 
-    public void setListOfAddresses(Set<Address> listOFaddresses) {
-        this.listOfAddresses = listOFaddresses;
+    public void setListOfAddresses(Collection<Address> listOfAddresses) {
+        this.listOfAddresses = listOfAddresses;
     }
 
     public String getDescriptions() {
@@ -68,6 +74,7 @@ public class UserDetails {
                 ", userName='" + userName + '\'' +
                 ", joinedDate=" + joinedDate +
                 ", descriptions='" + descriptions + '\'' +
+                ", list Of addresses='" + listOfAddresses + '\'' +
                 '}';
     }
 }
