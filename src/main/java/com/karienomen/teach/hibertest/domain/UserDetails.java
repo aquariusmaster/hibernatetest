@@ -10,11 +10,12 @@ import java.util.Date;
 @Table(name = "user_details")
 public class UserDetails {
 
-    @Id
+    @Id @GeneratedValue
     private int userId;
     private String userName;
     private Date joinedDate;
-    private String address;
+    @Embedded
+    private Address address;
     private String descriptions;
 
 
@@ -42,11 +43,11 @@ public class UserDetails {
         this.joinedDate = joinedDate;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

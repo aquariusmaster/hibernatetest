@@ -1,3 +1,4 @@
+import com.karienomen.teach.hibertest.domain.Address;
 import com.karienomen.teach.hibertest.domain.UserDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,9 +15,15 @@ public class App {
     public static void main(String[] args) {
 
         UserDetails user = new UserDetails();
-        user.setUserId(1);
         user.setUserName("First User");
-        user.setAddress("User address");
+
+        Address address = new Address();
+        address.setStreet("Kopernika 16");
+        address.setCity("Kyiv");
+        address.setRegion("Kyivska");
+        address.setCountry("Ukraine");
+        user.setAddress(address);
+
         user.setDescriptions("User decsriptions");
         user.setJoinedDate(new Date());
 
