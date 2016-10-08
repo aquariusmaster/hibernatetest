@@ -18,15 +18,26 @@ public class App {
         user.setUserName("First User");
         user.setAddress("User address");
         user.setDescriptions("User decsriptions");
+        user.setJoinedDate(new Date());
 
-        Calendar calendar = Calendar.getInstance();
-        long now = calendar.getTimeInMillis();
-        user.setJoinedDate(new Date(now));
-
+        //save User
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
+        session.close();
+
+        //Retrieve user object
+        user = null;
+        session = factory.openSession();
+        session.beginTransaction();
+        user = session.get(UserDetails.class, 1);
+
+        System.out.println(user);
+
+        session.close();
+
+        factory.close();
     }
 }

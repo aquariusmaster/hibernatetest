@@ -1,9 +1,6 @@
 package com.karienomen.teach.hibertest.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -59,5 +56,16 @@ public class UserDetails {
 
     public void setDescriptions(String descriptions) {
         this.descriptions = descriptions;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", joinedDate=" + joinedDate +
+                ", address='" + address + '\'' +
+                ", descriptions='" + descriptions + '\'' +
+                '}';
     }
 }
