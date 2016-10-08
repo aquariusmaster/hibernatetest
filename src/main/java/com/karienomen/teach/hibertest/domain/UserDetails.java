@@ -2,6 +2,8 @@ package com.karienomen.teach.hibertest.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by karienomen on 08.10.16.
@@ -14,8 +16,8 @@ public class UserDetails {
     private int userId;
     private String userName;
     private Date joinedDate;
-    @Embedded
-    private Address address;
+    @ElementCollection
+    private Set<Address> listOfAddresses = new HashSet<Address>();
     private String descriptions;
 
 
@@ -43,12 +45,12 @@ public class UserDetails {
         this.joinedDate = joinedDate;
     }
 
-    public Address getAddress() {
-        return address;
+    public Set<Address> getListOfAddresses() {
+        return listOfAddresses;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setListOfAddresses(Set<Address> listOFaddresses) {
+        this.listOfAddresses = listOFaddresses;
     }
 
     public String getDescriptions() {
@@ -65,7 +67,6 @@ public class UserDetails {
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", joinedDate=" + joinedDate +
-                ", address='" + address + '\'' +
                 ", descriptions='" + descriptions + '\'' +
                 '}';
     }

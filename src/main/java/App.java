@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -17,12 +16,20 @@ public class App {
         UserDetails user = new UserDetails();
         user.setUserName("First User");
 
-        Address address = new Address();
-        address.setStreet("Kopernika 16");
-        address.setCity("Kyiv");
-        address.setRegion("Kyivska");
-        address.setCountry("Ukraine");
-        user.setAddress(address);
+        Address address1 = new Address();
+        address1.setStreet("Kopernika 16");
+        address1.setCity("Kyiv");
+        address1.setRegion("Kyivska");
+        address1.setCountry("Ukraine");
+
+        Address address2 = new Address();
+        address2.setStreet("Artema");
+        address2.setCity("Kyiv");
+        address2.setRegion("Kyivska");
+        address2.setCountry("Ukraine");
+
+        user.getListOfAddresses().add(address1);
+        user.getListOfAddresses().add(address2);
 
         user.setDescriptions("User decsriptions");
         user.setJoinedDate(new Date());

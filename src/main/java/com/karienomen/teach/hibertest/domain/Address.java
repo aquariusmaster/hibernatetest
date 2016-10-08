@@ -1,6 +1,7 @@
 package com.karienomen.teach.hibertest.domain;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 
 /**
  * Created by karienomen on 08.10.16.
