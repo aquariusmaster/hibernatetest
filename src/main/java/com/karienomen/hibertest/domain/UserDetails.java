@@ -25,7 +25,8 @@ public class UserDetails {
     @CollectionId(columns = {@Column(name = "address_id")}, type = @Type(type = "long"), generator = "sequence-gen")
     private Collection<Address> listOfAddresses = new ArrayList<Address>();
     private String descriptions;
-
+    @OneToOne
+    private Notebook notebook;
 
     public int getUserId() {
         return userId;
@@ -67,14 +68,23 @@ public class UserDetails {
         this.descriptions = descriptions;
     }
 
+    public Notebook getNotebook() {
+        return notebook;
+    }
+
+    public void setNotebook(Notebook notebook) {
+        this.notebook = notebook;
+    }
+
     @Override
     public String toString() {
         return "UserDetails{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", joinedDate=" + joinedDate +
+                ", listOfAddresses=" + listOfAddresses +
                 ", descriptions='" + descriptions + '\'' +
-                ", list Of addresses='" + listOfAddresses + '\'' +
+                ", notebook=" + notebook +
                 '}';
     }
 }
