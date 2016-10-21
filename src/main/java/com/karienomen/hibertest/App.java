@@ -1,6 +1,6 @@
 package com.karienomen.hibertest;
 
-import com.karienomen.hibertest.domain.Notebook;
+import com.karienomen.hibertest.domain.Computer;
 import com.karienomen.hibertest.domain.UserDetails;
 import com.karienomen.hibertest.domain.Address;
 import org.hibernate.Session;
@@ -38,16 +38,16 @@ public class App {
         user.setDescriptions("User decsriptions");
         user.setJoinedDate(new Date());
 
-        Notebook notebook = new Notebook();
-        notebook.setModel("Dell 5230");
-        user.setNotebook(notebook);
+        Computer computer = new Computer();
+        computer.setModel("Dell 5230");
+        user.setComputer(computer);
 
         //save User
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
         session.save(user);
-        session.save(notebook);
+        session.save(computer);
         session.getTransaction().commit();
         session.close();
 

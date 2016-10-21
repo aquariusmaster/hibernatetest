@@ -8,17 +8,17 @@ import javax.persistence.Id;
  * Created by karienomen on 09.10.16.
  */
 @Entity
-public class Notebook {
+public class Computer {
     @Id @GeneratedValue
-    private int notebookId;
+    private int computerId;
     private String model;
 
-    public int getNotebookId() {
-        return notebookId;
+    public int getComputerId() {
+        return computerId;
     }
 
-    public void setNotebookId(int notebookId) {
-        this.notebookId = notebookId;
+    public void setComputerId(int computerId) {
+        this.computerId = computerId;
     }
 
     public String getModel() {
@@ -31,8 +31,8 @@ public class Notebook {
 
     @Override
     public String toString() {
-        return "Notebook{" +
-                "notebookId=" + notebookId +
+        return "Computer{" +
+                "notebookId=" + computerId +
                 ", model='" + model + '\'' +
                 '}';
     }

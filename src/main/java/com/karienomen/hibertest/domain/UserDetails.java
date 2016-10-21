@@ -26,7 +26,7 @@ public class UserDetails {
     private Collection<Address> listOfAddresses = new ArrayList<Address>();
     private String descriptions;
     @OneToOne
-    private Notebook notebook;
+    private Computer computer;
 
     public int getUserId() {
         return userId;
@@ -68,12 +68,12 @@ public class UserDetails {
         this.descriptions = descriptions;
     }
 
-    public Notebook getNotebook() {
-        return notebook;
+    public Computer getComputer() {
+        return computer;
     }
 
-    public void setNotebook(Notebook notebook) {
-        this.notebook = notebook;
+    public void setComputer(Computer computer) {
+        this.computer = computer;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class UserDetails {
                 ", joinedDate=" + joinedDate +
                 ", listOfAddresses=" + listOfAddresses +
                 ", descriptions='" + descriptions + '\'' +
-                ", notebook=" + notebook +
+                ", computer=" + computer +
                 '}';
     }
 }
