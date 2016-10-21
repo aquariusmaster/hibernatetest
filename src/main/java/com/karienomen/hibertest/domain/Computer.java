@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Computer {
     @Id @GeneratedValue
     private int computerId;
-    private String model;
+    private String name;
 
     public int getComputerId() {
         return computerId;
@@ -21,19 +21,19 @@ public class Computer {
         this.computerId = computerId;
     }
 
-    public String getModel() {
-        return model;
+    public String getName() {
+        return name;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Computer{" +
                 "notebookId=" + computerId +
-                ", model='" + model + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

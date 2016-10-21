@@ -17,6 +17,8 @@
 
         <mapping class="com.karienomen.hibertest.domain.UserDetails" />
         <mapping class="com.karienomen.hibertest.domain.Computer" />
+        <mapping class="com.karienomen.hibertest.domain.Notebook" />
+        <mapping class="com.karienomen.hibertest.domain.PC" />
 
     </session-factory>
 </hibernate-configuration>

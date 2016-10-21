@@ -1,14 +1,11 @@
 package com.karienomen.hibertest;
 
-import com.karienomen.hibertest.domain.Computer;
-import com.karienomen.hibertest.domain.UserDetails;
-import com.karienomen.hibertest.domain.Address;
+import com.karienomen.hibertest.domain.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Date;
-import java.util.Iterator;
 
 /**
  * Created by karienomen on 08.10.16.
@@ -39,31 +36,53 @@ public class App {
         user.setJoinedDate(new Date());
 
         Computer computer = new Computer();
-        computer.setModel("Dell 5230");
+        computer.setName("Computer");
         user.setComputer(computer);
 
-        //save User
+        Notebook note = new Notebook();
+        note.setName("Laptop");
+        note.setScreenSize(12.5f);
+
+        PC pc = new PC();
+        pc.setName("Desctop");
+        pc.setArchitecture("775");
+
+        System.out.println(note);
+        System.out.println(pc);
+
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        session.save(user);
         session.save(computer);
+        session.save(note);
+        session.save(pc);
+
         session.getTransaction().commit();
         session.close();
-
-        //Retrieve user object
-        user = null;
-        session = factory.openSession();
-        user = session.get(UserDetails.class, 1);
-
-        System.out.println("OUT");
-        System.out.println(user);
-        Iterator iterator = user.getListOfAddresses().iterator();
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-
-
-        session.close();
         factory.close();
+
+//        //save User
+//        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+//        Session session = factory.openSession();
+//        session.beginTransaction();
+//        session.save(user);
+//        session.save(computer);
+//        session.getTransaction().commit();
+//        session.close();
+//
+//        //Retrieve user object
+//        user = null;
+//        session = factory.openSession();
+//        user = session.get(UserDetails.class, 1);
+//
+//        System.out.println("OUT");
+//        System.out.println(user);
+//        Iterator iterator = user.getListOfAddresses().iterator();
+//        System.out.println(iterator.next());
+//        System.out.println(iterator.next());
+//
+//
+//        session.close();
+//        factory.close();
     }
 }
