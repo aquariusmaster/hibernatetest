@@ -4,8 +4,10 @@ import com.karienomen.hibertest.domain.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by karienomen on 08.10.16.
@@ -44,7 +46,7 @@ public class App {
         note.setScreenSize(12.5f);
 
         PC pc = new PC();
-        pc.setName("Desctop");
+        pc.setName("Desktop");
         pc.setArchitecture("775");
 
         System.out.println(note);
@@ -57,32 +59,14 @@ public class App {
         session.save(note);
         session.save(pc);
 
+        Query query = session.createQuery("from Computer");
+        List list = query.list();
+        System.out.println("Query: " + list);
+        System.out.println("Size: " + list.size());
+
         session.getTransaction().commit();
         session.close();
         factory.close();
 
-//        //save User
-//        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-//        Session session = factory.openSession();
-//        session.beginTransaction();
-//        session.save(user);
-//        session.save(computer);
-//        session.getTransaction().commit();
-//        session.close();
-//
-//        //Retrieve user object
-//        user = null;
-//        session = factory.openSession();
-//        user = session.get(UserDetails.class, 1);
-//
-//        System.out.println("OUT");
-//        System.out.println(user);
-//        Iterator iterator = user.getListOfAddresses().iterator();
-//        System.out.println(iterator.next());
-//        System.out.println(iterator.next());
-//
-//
-//        session.close();
-//        factory.close();
     }
 }
