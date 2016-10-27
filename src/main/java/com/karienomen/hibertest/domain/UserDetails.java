@@ -11,6 +11,7 @@ import java.util.*;
  * Created by karienomen on 08.10.16.
  */
 @Entity
+@NamedQuery(name = "UserDetails.byId", query = "from UserDetails where userId = ?")
 @Table(name = "user_details")
 public class UserDetails {
 

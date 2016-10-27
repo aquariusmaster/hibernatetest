@@ -55,16 +55,18 @@ public class App {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        session.save(computer);
-        session.save(note);
-        session.save(pc);
-
-        Query query = session.createQuery("from Computer");
-        List list = query.list();
-        System.out.println("Query: " + list);
-        System.out.println("Size: " + list.size());
+//        session.save(computer);
+//        session.save(note);
+//        session.save(pc);
+//        session.save(user);
 
         session.getTransaction().commit();
+        Query query = session.getNamedQuery("UserDetails.byId");
+        query.setParameter(0, 4);
+        UserDetails fetchedUser = (UserDetails) query.getSingleResult();
+
+        System.out.println("USerDetails fetched: " + fetchedUser);
+
         session.close();
         factory.close();
 
