@@ -52,19 +52,32 @@ public class App {
         Session session = factory.openSession();
         session.beginTransaction();
 
+        System.out.println("First step");
+
+        Query query = session.createQuery("from UserDetails where userId = 2");
+        query.setCacheable(true);
+        query.list();
+
         UserDetails user = session.get(UserDetails.class, 2);
-        System.out.println("User1: " + user);
+//        System.out.println("User1: " + user);
 
 
         session.close();
 
-        session = factory.openSession();
-        session.beginTransaction();
+        System.out.println("Second step");
 
-        UserDetails user1 = session.get(UserDetails.class, 2);
-        System.out.println("User2: " +user1);
+        Session session2 = factory.openSession();
+        session2.beginTransaction();
 
-        session.close();
+
+        Query query2 = session2.createQuery("from UserDetails where userId = 2");
+        query2.setCacheable(true);
+        query2.list();
+
+        UserDetails user1 = session2.get(UserDetails.class, 2);
+//        System.out.println("User2: " +user1);
+
+        session2.close();
         factory.close();
 
     }
