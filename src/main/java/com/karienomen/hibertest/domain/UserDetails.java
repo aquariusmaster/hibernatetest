@@ -15,7 +15,7 @@ import java.util.*;
 @NamedQuery(name = "UserDetails.byId", query = "from UserDetails where userId = ?")
 @Table(name = "user_details")
 @Cacheable
-@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE, region="user_details")
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE)
 public class UserDetails {
 
     @Id @GeneratedValue
