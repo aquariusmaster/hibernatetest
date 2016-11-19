@@ -1,10 +1,11 @@
 package com.karienomen.hibertest.domain;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.util.*;
 
 /**
@@ -13,6 +14,8 @@ import java.util.*;
 @Entity
 @NamedQuery(name = "UserDetails.byId", query = "from UserDetails where userId = ?")
 @Table(name = "user_details")
+@Cacheable
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE, region="user_details")
 public class UserDetails {
 
     @Id @GeneratedValue
